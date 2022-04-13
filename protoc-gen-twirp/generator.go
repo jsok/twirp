@@ -187,7 +187,7 @@ func deduceGenPkgName(genFiles []*descriptor.FileDescriptorProto) (string, error
 			name = stringutils.CleanIdentifier(name)
 			if genPkgName != "" && genPkgName != name {
 				// Make sure they're all set consistently.
-				return "", errors.Errorf("files have conflicting go_package settings, must be the same: %q and %q", genPkgName, name)
+				return "", errors.Errorf("files (%s) have conflicting go_package settings, must be the same: %q and %q", f.GetName(), genPkgName, name)
 			}
 			genPkgName = name
 		}
